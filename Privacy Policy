@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — OnBase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --card-border: #dfe2e8;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --accent: #ff6900;
+    --accent-dim: #e05e00;
+    --focus: rgba(255,105,0,0.18);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  a{ color: var(--accent-dim); }
+
+  /* Top bar */
+  header.brand{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 24px 20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .brand-mark{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .brand-tag{
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* Hero */
+  .hero{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 24px 0;
+  }
+
+  .eyebrow{
+    color: var(--accent-dim);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 14px 0;
+  }
+
+  h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 4.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-sub{
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 0 8px 0;
+  }
+
+  .updated{
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  /* Layout */
+  .wrapper{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  @media (max-width: 880px){
+    .wrapper{ grid-template-columns: 1fr; gap: 32px; }
+    .hero{ padding: 40px 20px 0; }
+    header.brand{ padding: 22px 20px 16px; }
+  }
+
+  /* Sidebar nav */
+  nav.toc{
+    position: sticky;
+    top: 28px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+
+  @media (max-width: 880px){
+    nav.toc{ position: static; }
+  }
+
+  .toc-title{
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0 0 14px 0;
+  }
+
+  nav.toc ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    counter-reset: toc;
+  }
+
+  nav.toc li{ counter-increment: toc; }
+
+  nav.toc a{
+    display: block;
+    padding: 7px 8px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+
+  nav.toc a::before{
+    content: counter(toc) ".  ";
+    color: var(--text-muted);
+  }
+
+  nav.toc a:hover{
+    background: #f8f5f2;
+    color: var(--accent-dim);
+  }
+
+  nav.toc a.active{
+    background: #fff1e6;
+    color: var(--accent-dim);
+    font-weight: 600;
+  }
+
+  nav.toc a.active::before{
+    color: var(--accent-dim);
+  }
+
+  /* Document */
+  .doc{
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 44px;
+    box-shadow: 0 20px 40px rgba(30,41,59,0.06);
+  }
+
+  @media (max-width: 560px){
+    .doc{ padding: 28px 22px; }
+  }
+
+  .doc > p.lede{
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 0 0 20px 0;
+  }
+
+  .doc > p.lede + p.lede{ margin-top: -8px; }
+
+  section{
+    margin-bottom: 40px;
+    padding-top: 8px;
+    scroll-margin-top: 28px;
+  }
+
+  section:last-of-type{ margin-bottom: 0; }
+
+  section h2{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 14px 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--card-border);
+  }
+
+  section:first-of-type h2{ border-top: none; padding-top: 0; }
+
+  section h3{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin: 22px 0 8px 0;
+  }
+
+  section p{
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 12px 0;
+  }
+
+  section ul{
+    margin: 0 0 12px 0;
+    padding-left: 20px;
+  }
+
+  section li{
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .note{
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    background: #f8f9fb;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 4px 0 12px 0;
+  }
+
+  .contact-block{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.98rem;
+  }
+
+  .contact-block strong{ font-weight: 600; }
+
+  /* Footer */
+  footer.foot{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 24px 48px;
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  footer.foot a{ color: var(--text-muted); }
+  footer.foot a:hover{ color: var(--accent-dim); }
+
+  /* back to top */
+  .top-link{
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 0.85rem;
+    color: var(--accent-dim);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+  <header class="brand">
+    <a class="brand-mark" href="https://onbase-home.netlify.app/">onbase</a>
+    <span class="brand-tag">Ahmedabad, Gujarat</span>
+  </header>
+
+  <div class="hero">
+    <p class="eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="hero-sub">How OnBase collects, uses, and protects your information across the app, website, and related services.</p>
+    <p class="updated">Last updated: July 2026</p>
+  </div>
+
+  <div class="wrapper">
+
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#information-we-collect">Information we collect</a></li>
+        <li><a href="#how-we-use">How we use your information</a></li>
+        <li><a href="#information-sharing">Information sharing</a></li>
+        <li><a href="#data-security">Data security</a></li>
+        <li><a href="#data-retention">Data retention</a></li>
+        <li><a href="#user-rights">User rights</a></li>
+        <li><a href="#cookies">Cookies &amp; tracking</a></li>
+        <li><a href="#third-party">Third-party services</a></li>
+        <li><a href="#childrens-privacy">Children's privacy</a></li>
+        <li><a href="#marketing">Marketing &amp; communications</a></li>
+        <li><a href="#account-deletion">Account deletion</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#governing-law">Governing law</a></li>
+        <li><a href="#contact">Contact information</a></li>
+        <li><a href="#consent">Consent</a></li>
+      </ol>
+    </nav>
+
+    <div class="doc">
+
+      <p class="lede">This Privacy Policy ("Policy") explains how OnBase ("OnBase", "we", "our", or "us") collects, uses, stores, shares, and protects your personal information when you access or use the OnBase mobile application, website, and related digital services (collectively, the "Platform").</p>
+      <p class="lede">OnBase is a technology facilitator and aggregator platform that connects independent construction Workers and Professionals with Contractors, Builders, Site Owners, Homeowners, and other Users seeking construction services.</p>
+      <p class="lede">This Policy applies only to information collected by OnBase through the Platform, and not to the independent privacy practices of Workers, Professionals, or third-party services linked to or integrated with the Platform.</p>
+      <p class="lede">By accessing or using the Platform, you acknowledge that you have read, understood, and agreed to the collection, use, storage, and disclosure of your information as described here. If you do not agree, please do not use the Platform.</p>
+
+      <section id="information-we-collect">
+        <h2>1. Information we collect</h2>
+        <p>We may collect the following categories of information.</p>
+
+        <h3>(a) Personal information</h3>
+        <p>When you register, create an account, make a booking, or otherwise use the Platform, we may collect:</p>
+        <ul>
+          <li>Full name</li>
+          <li>Mobile number</li>
+          <li>Email address (if provided)</li>
+          <li>Residential or service address</li>
+          <li>City and state</li>
+          <li>Profile photograph (if uploaded)</li>
+          <li>Account credentials</li>
+          <li>Government-issued identification documents (for Worker verification, where applicable)</li>
+          <li>GST or business details (if applicable)</li>
+          <li>Any other information voluntarily provided by you</li>
+        </ul>
+        <p>You may choose not to provide certain information; however, doing so may limit your ability to access certain Platform features.</p>
+
+        <h3>(b) Booking &amp; service information</h3>
+        <ul>
+          <li>Service requests</li>
+          <li>Worker preferences</li>
+          <li>Construction site location</li>
+          <li>Booking date and time</li>
+          <li>Number of Workers requested</li>
+          <li>Booking duration</li>
+          <li>Service history</li>
+          <li>Booking status</li>
+          <li>Cancellation history</li>
+          <li>Ratings and reviews</li>
+          <li>Customer support communications</li>
+        </ul>
+
+        <h3>(c) Payment information</h3>
+        <p>Payments may be processed through authorized third-party payment service providers. We may collect limited payment-related information, including transaction ID, payment status, payment method, payment timestamp, and refund status.</p>
+        <div class="note">OnBase does not collect or store sensitive payment information such as debit or credit card numbers, CVV, UPI PIN, banking passwords, or internet banking credentials. Such information is processed directly by authorized third-party payment gateways.</div>
+
+        <h3>(d) Device &amp; technical information</h3>
+        <p>We may automatically collect device model, device identifiers, operating system, browser type, app version, IP address, mobile network information, crash reports, diagnostic information, usage statistics, log files, and session information.</p>
+
+        <h3>(e) Location information</h3>
+        <p>To facilitate construction service bookings, we may collect city, service address, approximate location, and GPS location (only where permission has been granted). Location information may be used to assign nearby Workers, estimate travel distance, improve operational efficiency, prevent fraud, and facilitate customer support.</p>
+        <p>Users may revoke location permission through their device settings; however, certain Platform features may not function properly.</p>
+
+        <h3>(f) Mobile application permissions</h3>
+        <p>Depending on your device and the Platform features you use, OnBase may request access to location, camera, photos, storage, notifications, and phone (where required for Platform functionality). These permissions are requested solely for providing Platform features and improving user experience.</p>
+      </section>
+
+      <section id="how-we-use">
+        <h2>2. How we use your information</h2>
+        <p>We use your information for purposes including:</p>
+        <ul>
+          <li>Creating and managing user accounts</li>
+          <li>Processing service bookings</li>
+          <li>Connecting Users with Workers and Professionals</li>
+          <li>Assigning nearby Workers</li>
+          <li>Facilitating payment processing</li>
+          <li>Providing customer support</li>
+          <li>Verifying Worker identities</li>
+          <li>Improving Platform functionality</li>
+          <li>Sending booking confirmations</li>
+          <li>Sending OTPs and notifications</li>
+          <li>Communicating service updates</li>
+          <li>Preventing fraud and abuse</li>
+          <li>Maintaining Platform security</li>
+          <li>Resolving disputes</li>
+          <li>Enforcing our Terms of Service</li>
+          <li>Complying with legal obligations</li>
+          <li>Conducting analytics and service improvements</li>
+        </ul>
+      </section>
+
+      <section id="information-sharing">
+        <h2>3. Information sharing</h2>
+        <p>We may share information only where reasonably necessary.</p>
+
+        <h3>(a) With Workers or Professionals</h3>
+        <p>When a booking is confirmed, we may share your name, contact number, service location, and booking details with the assigned Worker — this is necessary to complete the requested service.</p>
+
+        <h3>(b) With service providers</h3>
+        <p>We may share information with trusted third-party service providers, including payment gateways, cloud hosting providers, SMS and OTP providers, customer support tools, analytics providers, communication platforms, and mapping and location service providers. These providers are contractually required to protect your information.</p>
+
+        <h3>(c) Legal compliance</h3>
+        <p>We may disclose information where required by law, court orders, government authorities, regulatory agencies, or law enforcement agencies, or where reasonably necessary to prevent fraud, protect legal rights, protect public safety, or enforce our Terms of Service.</p>
+
+        <h3>(d) Business transfers</h3>
+        <p>If OnBase undergoes a merger, acquisition, investment, restructuring, or transfer of business assets, user information may be transferred as part of such transaction in accordance with applicable law.</p>
+
+        <h3>(e) No sale of personal information</h3>
+        <p>OnBase does not sell Users' personal information to third parties for their independent marketing purposes.</p>
+      </section>
+
+      <section id="data-security">
+        <h2>4. Data security</h2>
+        <p>We implement reasonable administrative, technical, and organizational safeguards to protect personal information, including secure cloud infrastructure, encryption where appropriate, access controls, authentication mechanisms, monitoring systems, restricted internal access, and periodic security reviews.</p>
+        <p>While we take reasonable precautions, no electronic transmission or storage system can be guaranteed to be completely secure. Users are responsible for maintaining the confidentiality of their account credentials.</p>
+      </section>
+
+      <section id="data-retention">
+        <h2>5. Data retention</h2>
+        <p>We retain personal information only for as long as reasonably necessary to provide Platform services, process bookings, comply with legal obligations, resolve disputes, prevent fraud, maintain business records, and enforce our legal rights.</p>
+        <p>Certain information may be retained even after account deletion where required by applicable law or for legitimate business purposes. After the applicable retention period, information may be securely deleted, anonymized, or aggregated.</p>
+      </section>
+
+      <section id="user-rights">
+        <h2>6. User rights</h2>
+        <p>Subject to applicable law, Users may request to:</p>
+        <ul>
+          <li>Access their personal information</li>
+          <li>Update inaccurate information</li>
+          <li>Correct personal information</li>
+          <li>Delete their account</li>
+          <li>Request deletion of personal data (subject to legal obligations)</li>
+          <li>Withdraw consent where applicable</li>
+          <li>Contact us regarding privacy concerns</li>
+        </ul>
+        <p>Requests may be submitted through OnBase Support.</p>
+      </section>
+
+      <section id="cookies">
+        <h2>7. Cookies &amp; tracking technologies</h2>
+        <p>Our website may use cookies and similar technologies to remember login sessions, store user preferences, improve website functionality, measure Platform performance, analyze usage patterns, and enhance security.</p>
+        <p>Users may disable cookies through browser settings; however, certain features of the Platform may not function properly.</p>
+      </section>
+
+      <section id="third-party">
+        <h2>8. Third-party services</h2>
+        <p>The Platform may integrate with or contain links to third-party services including payment gateways, mapping providers, cloud hosting providers, analytics services, or other technology partners.</p>
+        <p>OnBase is not responsible for the privacy practices of such third-party services. Users are encouraged to review the privacy policies of those providers.</p>
+      </section>
+
+      <section id="childrens-privacy">
+        <h2>9. Children's privacy</h2>
+        <p>The Platform is intended only for individuals who are at least 18 years of age. We do not knowingly collect personal information from children. If we become aware that personal information of a minor has been collected, we will take reasonable steps to delete such information.</p>
+      </section>
+
+      <section id="marketing">
+        <h2>10. Marketing &amp; communications</h2>
+        <p>We may send Users booking confirmations, OTPs, transaction receipts, service reminders, customer support communications, important Platform updates, and promotional communications (where permitted). Users may opt out of promotional communications where applicable.</p>
+      </section>
+
+      <section id="account-deletion">
+        <h2>11. Account deletion</h2>
+        <p>Users may request deletion of their account by contacting OnBase Support. Deletion requests are subject to legal, regulatory, tax, fraud prevention, and dispute resolution requirements. Certain information may be retained where required by law or to protect the legitimate interests of OnBase.</p>
+      </section>
+
+      <section id="changes">
+        <h2>12. Changes to this policy</h2>
+        <p>OnBase may update this Policy from time to time to reflect changes in applicable laws, business operations, technology, Platform features, or security practices. Updated versions will be published on the Platform with a revised "Last Updated" date.</p>
+        <p>Continued use of the Platform after any update constitutes acceptance of the revised Policy.</p>
+      </section>
+
+      <section id="governing-law">
+        <h2>13. Governing law</h2>
+        <p>This Policy shall be governed by and construed in accordance with the laws of India, including the Information Technology Act, 2000, the Digital Personal Data Protection Act, 2023 (as applicable), and other relevant laws in force from time to time.</p>
+      </section>
+
+      <section id="contact">
+        <h2>14. Contact information</h2>
+        <p>For any questions, requests, complaints, or privacy-related concerns, please contact:</p>
+        <div class="contact-block">
+          <span><strong>OnBase Support</strong></span>
+          <span>Website: <a href="https://onbasenow.com">onbasenow.com</a></span>
+          <span>Email: <a href="mailto:support@onbasenow.com">support@onbasenow.com</a></span>
+          <span>Location: Ahmedabad, Gujarat, India</span>
+        </div>
+      </section>
+
+      <section id="consent">
+        <h2>15. Consent</h2>
+        <p>By registering for, accessing, or using the Platform, you expressly consent to the collection, storage, use, processing, and disclosure of your personal information in accordance with this Policy.</p>
+        <p>If you do not agree with this Policy, you should discontinue use of the Platform immediately.</p>
+      </section>
+
+      <a class="top-link" href="#top">Back to top ↑</a>
+
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>© 2026 OnBase, Ahmedabad.</span>
+    <span><a href="https://onbase-home.netlify.app/">Back to home</a> · <a href="https://www.instagram.com/onbasenow">Instagram</a></span>
+  </footer>
+
+  <script>
+    (function(){
+      var sections = Array.prototype.slice.call(document.querySelectorAll('.doc section[id]'));
+      var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+      var linkByHref = {};
+      links.forEach(function(link){
+        linkByHref[link.getAttribute('href').slice(1)] = link;
+      });
+
+      function setActive(id){
+        links.forEach(function(link){ link.classList.remove('active'); });
+        var active = linkByHref[id];
+        if(active) active.classList.add('active');
+      }
+
+      if('IntersectionObserver' in window){
+        var visible = new Map();
+
+        var observer = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            visible.set(entry.target.id, entry.intersectionRatio);
+          });
+
+          var topMost = null;
+          var topMostRatio = 0;
+          visible.forEach(function(ratio, id){
+            if(ratio > topMostRatio){
+              topMostRatio = ratio;
+              topMost = id;
+            }
+          });
+
+          if(topMost) setActive(topMost);
+        }, {
+          root: null,
+          rootMargin: '-15% 0px -70% 0px',
+          threshold: [0, 0.25, 0.5, 0.75, 1]
+        });
+
+        sections.forEach(function(section){ observer.observe(section); });
+      }
+
+      if(sections.length) setActive(sections[0].id);
+    })();
+  </script>
+
+</body>
+</html>

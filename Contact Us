@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — OnBase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --card-border: #dfe2e8;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --accent: #ff6900;
+    --accent-dim: #e05e00;
+    --slate: #1e293b;
+    --focus: rgba(255,105,0,0.18);
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  .wrapper{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 72px 24px 48px;
+  }
+
+  header.brand{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .brand-mark{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-tag{
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  @media (max-width: 880px){
+    .grid{ grid-template-columns: 1fr; gap: 44px; }
+    .wrapper{ padding: 48px 20px 40px; }
+  }
+
+  /* Left column */
+  h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.08;
+    margin: 0 0 22px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .intro{
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin: 0 0 44px 0;
+    max-width: 480px;
+  }
+
+  .reach-list{
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 48px;
+  }
+
+  .reach-item{
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .reach-icon{
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+
+  .reach-icon svg{ width: 18px; height: 18px; }
+
+  .reach-label{
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0 0 3px 0;
+  }
+
+  .reach-value{
+    font-size: 1.02rem;
+    margin: 0;
+  }
+
+  .reach-value a{
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .reach-value a:hover{
+    border-bottom-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Response timeline, echoing the homepage flow */
+  .timeline{
+    border-top: 1px solid var(--card-border);
+    padding-top: 28px;
+  }
+
+  .timeline-title{
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0 0 18px 0;
+  }
+
+  .tl-row{
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .tl-time{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    color: var(--accent-dim);
+    padding-top: 2px;
+  }
+
+  .tl-copy{
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .tl-copy strong{
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Right column: form card */
+  .card{
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 38px;
+    box-shadow: 0 20px 40px rgba(30,41,59,0.06);
+  }
+
+  @media (max-width: 480px){
+    .card{ padding: 26px 22px; }
+  }
+
+  .card h2{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+  }
+
+  .card-sub{
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin: 0 0 28px 0;
+  }
+
+  .field{
+    margin-bottom: 16px;
+  }
+
+  .field label{
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 7px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea{
+    width: 100%;
+    padding: 13px 14px;
+    font-size: 0.98rem;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    background: #f8f9fb;
+    color: var(--text);
+    font-family: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  select{
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  input::placeholder, textarea::placeholder{
+    color: #97a0ad;
+  }
+
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--focus);
+  }
+
+  textarea{
+    min-height: 130px;
+    resize: vertical;
+  }
+
+  .submit-btn{
+    width: 100%;
+    padding: 15px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+    margin-top: 6px;
+  }
+
+  .submit-btn:hover{ background: var(--accent-dim); }
+  .submit-btn:active{ transform: scale(0.99); }
+  .submit-btn:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .status-msg{
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: var(--accent-dim);
+    display: none;
+  }
+  .status-msg.show{ display: block; }
+
+  footer.foot{
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  footer.foot a{ color: var(--text-muted); }
+  footer.foot a:hover{ color: var(--accent); }
+</style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <header class="brand">
+      <span class="brand-mark">onbase</span>
+      <span class="brand-tag">Ahmedabad, Gujarat</span>
+    </header>
+
+    <div class="grid">
+
+      <!-- Left column: info -->
+      <div>
+        <h1>Tell us what<br>your site needs.</h1>
+        <p class="intro">Hiring, a booking question, or something that needs sorting before tomorrow's shift — write to us and we'll get back to you same day.</p>
+
+        <div class="reach-list">
+          <div class="reach-item">
+            <span class="reach-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9 7 9-7"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+            </span>
+            <div>
+              <p class="reach-label">Email</p>
+              <p class="reach-value"><a href="mailto:support@onbase.com">support@onbase.com</a></p>
+            </div>
+          </div>
+
+          <div class="reach-item">
+            <span class="reach-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <div>
+              <p class="reach-label">WhatsApp / Phone</p>
+              <p class="reach-value"><a href="https://wa.me/919574089943">+91 95740 89943</a></p>
+            </div>
+          </div>
+
+          <div class="reach-item">
+            <span class="reach-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <p class="reach-label">Based in</p>
+              <p class="reach-value">Ahmedabad, Gujarat, India</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <p class="timeline-title">What happens after you send it</p>
+          <div class="tl-row">
+            <span class="tl-time">Today</span>
+            <p class="tl-copy"><strong>You write in</strong> — trade, headcount, or whatever question's on your mind.</p>
+          </div>
+          <div class="tl-row">
+            <span class="tl-time">Same day</span>
+            <p class="tl-copy"><strong>We reply</strong> — no ticket numbers, just a straight answer from the ops desk.</p>
+          </div>
+          <div class="tl-row">
+            <span class="tl-time">7:00 AM</span>
+            <p class="tl-copy"><strong>Site's covered</strong> — if it's a booking, workers are already there.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column: form -->
+      <div class="card">
+        <h2>Send a message</h2>
+        <p class="card-sub">Fill this in and we'll write back today.</p>
+        <form id="contactForm">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
+          </div>
+          <div class="field">
+            <label for="reason">This is about</label>
+            <select id="reason" name="reason">
+              <option>Booking a worker</option>
+              <option>Joining as a worker</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Trade, dates, headcount — or just tell us what you need" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send message</button>
+          <p class="status-msg" id="statusMsg">Sent. We'll write back today.</p>
+        </form>
+      </div>
+
+    </div>
+
+    <footer class="foot">
+      <span>© 2026 OnBase, Ahmedabad.</span>
+      <span><a href="https://onbase-home.netlify.app/">Back to home</a> · <a href="https://www.instagram.com/onbasenow">Instagram</a></span>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      document.getElementById('statusMsg').classList.add('show');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

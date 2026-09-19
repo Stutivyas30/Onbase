@@ -219,6 +219,10 @@
     display:flex; align-items:baseline; justify-content:space-between; gap:20px;
     position:relative; z-index:2;
   }
+  .stack-eyebrow{
+    display:block; font-size:12.5px; font-weight:600; letter-spacing:.01em; opacity:.72; margin-bottom:8px;
+    position:relative; z-index:2;
+  }
   .stack-name{
     font-family:var(--font-display); font-size:clamp(26px,2.6vw,34px); font-weight:700; letter-spacing:-0.01em;
   }
@@ -247,11 +251,17 @@
   .tc-tile .add-btn-lg:hover{ background:#28323f; color:var(--concrete); }
   .tc-steel .add-btn-lg:hover{ background:#eef2f6; color:var(--ink); }
   .tc-helper .add-btn-lg:hover{ background:#4a2a0c; color:var(--peach); }
+  .tc-plaster .add-btn-lg:hover{ background:#3b1400; color:var(--orange); }
+  .tc-demo .add-btn-lg:hover{ background:#28323f; color:var(--concrete); }
+  .tc-cent .add-btn-lg:hover{ background:#eef2f6; color:var(--ink); }
 
   .tc-brick .stack-content{ background:var(--orange); color:#3b1400;} .tc-brick .blob{background:#ffb877;}
   .tc-tile .stack-content{ background:var(--concrete); color:#28323f;} .tc-tile .blob{background:#f2f4f7;}
   .tc-steel .stack-content{ background:var(--ink); color:#eef2f6;} .tc-steel .blob{background:#33445a;}
   .tc-helper .stack-content{ background:var(--peach); color:#4a2a0c;} .tc-helper .blob{background:#ffefdc;}
+  .tc-plaster .stack-content{ background:var(--orange); color:#3b1400;} .tc-plaster .blob{background:#ffb877;}
+  .tc-demo .stack-content{ background:var(--concrete); color:#28323f;} .tc-demo .blob{background:#f2f4f7;}
+  .tc-cent .stack-content{ background:var(--ink); color:#eef2f6;} .tc-cent .blob{background:#33445a;}
 
   @media (max-width:700px){
     .stack-card{ grid-template-columns:1fr; min-height:auto; }
@@ -377,17 +387,76 @@
   }
 
   /* ---------- INTERACTIVE MOMENT ---------- */
-  .game-section{ text-align:center; }
+  .game-section{ text-align:center; background:var(--ink); color:var(--paper); }
+  .game-section .section-head p{ color:rgba(246,242,233,.68); }
   .game-canvas-wrap{
-    max-width:640px; margin:0 auto; border-radius:24px; background:linear-gradient(180deg,#dde2e8,#c3ccd6);
+    max-width:640px; margin:0 auto; border-radius:24px; background:linear-gradient(180deg,#243244,#151f2b);
+    border:1px solid rgba(246,242,233,.12);
     position:relative; overflow:hidden; aspect-ratio:16/10;
   }
   #game{ width:100%; height:100%; display:block; cursor:crosshair; }
   .game-score{
-    position:absolute; top:16px; left:18px; font-family:var(--font-display); font-size:20px;
-    background:rgba(255,255,255,.75); padding:6px 14px; border-radius:100px;
+    position:absolute; top:16px; left:18px; font-family:var(--font-display); font-size:20px; color:var(--paper);
+    background:rgba(246,242,233,.1); border:1px solid rgba(246,242,233,.18); padding:6px 14px; border-radius:100px;
   }
-  .game-hint{ margin-top:18px; font-size:14px; color:rgba(30,41,59,.6); }
+  .game-hint{ margin-top:18px; font-size:14px; color:rgba(246,242,233,.55); }
+
+  /* ---------- APP DOWNLOAD ---------- */
+  .app-section{ background:var(--ink); color:var(--paper); }
+  .app-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
+  .app-eyebrow{
+    display:inline-flex; align-items:center; font-size:13px; font-weight:600; letter-spacing:.01em;
+    color:var(--peach); background:rgba(255,225,194,.1); padding:6px 14px; border-radius:100px; margin-bottom:22px;
+  }
+  .app-grid h2{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(30px,3.6vw,44px); letter-spacing:-0.015em; line-height:1.1;
+  }
+  .app-grid h2 em{ font-style:normal; color:var(--orange); }
+  .app-grid > div:first-child > p{
+    margin-top:18px; font-size:16px; line-height:1.6; color:rgba(246,242,233,.72); max-width:46ch;
+  }
+  .app-feature-list{ list-style:none; margin-top:28px; display:flex; flex-direction:column; gap:14px; }
+  .app-feature-list li{ display:flex; align-items:center; gap:12px; font-size:14.5px; color:rgba(246,242,233,.86); }
+  .app-feature-list .ic{
+    width:34px; height:34px; border-radius:10px; background:rgba(255,105,0,.14); color:var(--orange);
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .app-feature-list .ic svg{ width:17px; height:17px; }
+  .app-store-row{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
+  .store-btn{
+    display:flex; align-items:center; gap:10px; background:rgba(246,242,233,.06); border:1px solid rgba(246,242,233,.18);
+    padding:11px 18px; border-radius:12px; font-size:13.5px;
+  }
+  .store-btn svg{ width:20px; height:20px; flex:none; }
+  .store-btn .store-label{ display:flex; flex-direction:column; line-height:1.25; }
+  .store-btn .store-label small{ font-size:10.5px; color:rgba(246,242,233,.6); }
+  .store-btn .store-label strong{ font-size:14px; font-weight:600; }
+
+  .app-mock-col{ display:flex; justify-content:center; }
+  .app-mock{ position:relative; width:260px; }
+  .app-mock-phone{
+    width:100%; aspect-ratio:9/18.5; border-radius:34px; background:#0d141d; border:6px solid #26323f;
+    box-shadow:0 40px 80px rgba(0,0,0,.45); position:relative; overflow:hidden;
+  }
+  .app-mock-badge{
+    position:absolute; top:-16px; right:-18px; background:var(--orange); color:#241000;
+    font-size:12.5px; font-weight:700; padding:8px 14px; border-radius:100px;
+    box-shadow:0 14px 30px rgba(255,105,0,.35);
+  }
+  .app-mock-qr{
+    position:absolute; bottom:-24px; left:-30px; background:var(--paper); color:var(--ink);
+    border-radius:16px; padding:14px; display:flex; align-items:center; gap:12px;
+    box-shadow:0 20px 40px rgba(0,0,0,.25); max-width:200px;
+  }
+  .app-mock-qr svg{ width:54px; height:54px; flex:none; }
+  .app-mock-qr div{ font-size:11.5px; line-height:1.4; color:rgba(30,41,59,.66); }
+  .app-mock-qr strong{ display:block; font-size:12.5px; color:var(--ink); margin-bottom:2px; }
+
+  @media (max-width:860px){
+    .app-grid{ grid-template-columns:1fr; }
+    .app-mock-col{ margin-top:20px; }
+    .app-mock-qr{ position:static; margin-top:36px; max-width:none; }
+  }
 
   /* ---------- FAQ ---------- */
   .faq-section{ border-top:1px solid var(--line); }
@@ -421,13 +490,37 @@
   }
 
   /* ---------- FOOTER ---------- */
-  footer{ padding:70px 0 40px; border-top:1px solid var(--line); }
-  .footer-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:30px;}
-  .footer-tag{ font-family:var(--font-display); font-size:26px; max-width:340px; font-weight:700;}
-  .footer-links{ display:flex; gap:60px; font-size:14px; }
-  .footer-links div{ display:flex; flex-direction:column; gap:10px; }
-  .footer-links a{ color:rgba(30,41,59,0.65);}
-  .footer-bottom{ margin-top:60px; display:flex; justify-content:space-between; font-size:13px; color:rgba(30,41,59,0.5); flex-wrap:wrap; gap:10px;}
+  footer{ padding:80px 0 34px; background:#1e293b; color:#fff; }
+  .footer-top{
+    display:grid; grid-template-columns:1.7fr 0.8fr 0.8fr 1.1fr; gap:40px;
+    padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .footer-logo{ display:flex; align-items:center; gap:10px; }
+  .footer-logo svg{ width:34px; height:34px; }
+  .footer-logo span{ font-family:var(--font-display); font-weight:700; font-size:22px; color:#fff; }
+  .footer-desc{ margin-top:18px; font-size:14.5px; line-height:1.65; color:rgba(255,255,255,0.65); max-width:34ch; }
+  .footer-col{ display:flex; flex-direction:column; gap:14px; font-size:14.5px; }
+  .footer-col h4{ font-family:var(--font-display); font-weight:700; font-size:15px; color:var(--orange); margin-bottom:2px; }
+  .footer-col a{ color:#fff; transition:color .2s ease; }
+  .footer-col a:hover{ color:var(--orange); }
+  .footer-touch .footer-contact-line{
+    display:flex; align-items:center; gap:9px; color:#fff; font-size:14.5px; transition:color .2s ease;
+  }
+  .footer-touch .footer-contact-line svg{ width:16px; height:16px; flex:none; }
+  a.footer-contact-line:hover{ color:var(--orange); }
+  .footer-social{ display:flex; gap:16px; margin-top:6px; }
+  .footer-social a{ color:#fff; transition:color .2s ease; }
+  .footer-social a:hover{ color:var(--orange); }
+  .footer-social svg{ width:18px; height:18px; }
+  .footer-bottom{ margin-top:26px; font-size:13.5px; color:rgba(255,255,255,0.55); }
+
+  @media (max-width:860px){
+    .footer-top{ grid-template-columns:1fr 1fr; }
+    .footer-brand{ grid-column:1 / -1; }
+  }
+  @media (max-width:520px){
+    .footer-top{ grid-template-columns:1fr; }
+  }
 
   .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
@@ -446,14 +539,14 @@
 <header>
   <div class="logo"><span class="dot"></span>onbase</div>
   <nav>
-           <a href="#home">Home</a>
-           <a href="#service">Service</a>
-           <a href="#about-us">About Us </a>
-           <a href="#how-it-works">How it works</a>
-           <a href="#privacypolicy">Privay Policy </a>
-          
+           <a href="#trades">Service</a>
+           <a href="#story">How to Book</a>
+           <a href="#taste">Reviews</a>
+           <a href="#faq">FAQ</a>
+           <a href="#about-us">About Us</a>
+           <a href="/contact-us.html">Contact Us</a>
   </nav>
-  <button class="contact-us"> Contact Us></button>
+  <button class="crew-btn"> Get App</button>
 </header>
 
 <section class="hero">
@@ -469,8 +562,8 @@
       <h1 class="hero-title">On site,<br>before the<br><em>sun's up.</em></h1>
       <p class="hero-sub">Book a mason, tiler or helper the night before — they're already at your gate, tools in hand, when the site opens.</p>
       <div class="hero-ctas">
-        <a href="#trades" class="btn-primary">Book a worker</a>
-        <a href="#story" class="btn-text">How it works</a>
+        <a href="#download-app" class="btn-primary">Get the App</a>
+        <a href="#trades" class="btn-text">Explore Trades</a>
       </div>
     </div>
     <div class="hero-side">
@@ -542,14 +635,107 @@
           <div class="stack-content">
             <div class="blob"></div>
             <div class="stack-card-head">
-              <div class="stack-name">Brick Mason</div>
+              <div>
+                <span class="stack-eyebrow">Masonry</span>
+                <div class="stack-name">Brick Mason Pair</div>
+              </div>
               <div class="stack-price">from ₹850/day</div>
             </div>
-            <p class="stack-desc">Walling, bonding and finish work — from foundation courses to face brick, laid true and level.</p>
+            <p class="stack-desc">Skilled bricklayer with active helper for precision walling, bonding and brickwork.</p>
             <ul class="stack-features">
               <li>ID-verified and experience-checked</li>
               <li>Fixed daily rate, no haggling at the gate</li>
               <li>Brings own trowels, levels and basic tools</li>
+            </ul>
+            <button class="add-btn-lg" data-add>Add to crew <span>+</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-item">
+      <div class="wrap">
+        <div class="stack-card tc-plaster">
+          <div class="stack-media">
+            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plaster mason illustration">
+              <rect width="400" height="500" fill="#1b1108"/>
+              <defs>
+                <radialGradient id="gPlaster" cx="30%" cy="12%" r="70%">
+                  <stop offset="0%" stop-color="#ff6900" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#ff6900" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="500" fill="url(#gPlaster)"/>
+              <rect x="55" y="150" width="290" height="230" rx="6" fill="none" stroke="#f6f2e9" stroke-width="2" opacity="0.7"/>
+              <g transform="translate(200 265) rotate(-8)">
+                <rect x="-70" y="-10" width="140" height="20" rx="4" fill="#f6f2e9"/>
+                <rect x="-6" y="10" width="12" height="70" rx="4" fill="#ff6900"/>
+              </g>
+              <path d="M55 200 h290 M55 240 h290 M55 320 h290" stroke="#f6f2e9" stroke-width="1.4" opacity="0.35"/>
+            </svg>
+          </div>
+          <div class="stack-content">
+            <div class="blob"></div>
+            <div class="stack-card-head">
+              <div>
+                <span class="stack-eyebrow">Plastering</span>
+                <div class="stack-name">Plaster Mason Pair</div>
+              </div>
+              <div class="stack-price">from ₹880/day</div>
+            </div>
+            <p class="stack-desc">Smooth internal and external wall plastering, screed leveling and crack-free finish.</p>
+            <ul class="stack-features">
+              <li>ID-verified and experience-checked</li>
+              <li>Fixed daily rate, no haggling at the gate</li>
+              <li>Brings own trowels and screed rails</li>
+            </ul>
+            <button class="add-btn-lg" data-add>Add to crew <span>+</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-item">
+      <div class="wrap">
+        <div class="stack-card tc-helper">
+          <div class="stack-media">
+            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="General helper illustration">
+              <rect width="400" height="500" fill="#121c29"/>
+              <defs>
+                <radialGradient id="gHelp" cx="72%" cy="14%" r="70%">
+                  <stop offset="0%" stop-color="#ff6900" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#ff6900" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="500" fill="url(#gHelp)"/>
+              <g stroke="#f6f2e9" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="150" cy="360" r="26"/>
+                <path d="M124 340 L110 260 L260 260 L230 340 Z"/>
+                <line x1="110" y1="260" x2="70" y2="230"/>
+                <line x1="260" y1="260" x2="300" y2="230"/>
+                <line x1="70" y1="230" x2="90" y2="230"/>
+                <line x1="300" y1="230" x2="280" y2="230"/>
+              </g>
+              <g transform="translate(250 90) rotate(20)">
+                <rect x="-4" y="0" width="8" height="140" rx="4" fill="#f6f2e9"/>
+                <path d="M-30 130 Q0 100 30 130 L20 180 Q0 195 -20 180 Z" fill="#ff6900"/>
+              </g>
+            </svg>
+          </div>
+          <div class="stack-content">
+            <div class="blob"></div>
+            <div class="stack-card-head">
+              <div>
+                <span class="stack-eyebrow">Site Labor</span>
+                <div class="stack-name">Mason Helper</div>
+              </div>
+              <div class="stack-price">from ₹650/day</div>
+            </div>
+            <p class="stack-desc">Mortar and cement mixing, brick transport, scaffolding assist and clean staging.</p>
+            <ul class="stack-features">
+              <li>ID-verified and briefed before dispatch</li>
+              <li>Fixed daily rate, no haggling at the gate</li>
+              <li>Available same day or booked ahead</li>
             </ul>
             <button class="add-btn-lg" data-add>Add to crew <span>+</span></button>
           </div>
@@ -590,10 +776,13 @@
           <div class="stack-content">
             <div class="blob"></div>
             <div class="stack-card-head">
-              <div class="stack-name">Tile Mason</div>
+              <div>
+                <span class="stack-eyebrow">Flooring</span>
+                <div class="stack-name">Tile Mason Pair</div>
+              </div>
               <div class="stack-price">from ₹900/day</div>
             </div>
-            <p class="stack-desc">Floor and wall tiling for any format, with clean grout lines and level finishes throughout.</p>
+            <p class="stack-desc">Vitrified, ceramic and marble tile laying, laser alignment, grouting and skirting.</p>
             <ul class="stack-features">
               <li>Comfortable with vitrified, ceramic and stone tile</li>
               <li>Fixed daily rate, no haggling at the gate</li>
@@ -607,9 +796,97 @@
 
     <div class="stack-item">
       <div class="wrap">
+        <div class="stack-card tc-demo">
+          <div class="stack-media">
+            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Demolition worker illustration">
+              <rect width="400" height="500" fill="#101820"/>
+              <defs>
+                <radialGradient id="gDemo" cx="74%" cy="12%" r="70%">
+                  <stop offset="0%" stop-color="#E4E8ED" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#E4E8ED" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="500" fill="url(#gDemo)"/>
+              <g stroke="#f6f2e9" stroke-width="2" fill="none" opacity="0.55">
+                <path d="M50 380 L110 320 L90 300 L150 260 L130 330 L200 300 L180 380 Z"/>
+              </g>
+              <g transform="translate(230 150) rotate(35)">
+                <rect x="-8" y="0" width="16" height="150" rx="6" fill="#f6f2e9"/>
+                <path d="M-34 0 L34 0 L0 -60 Z" fill="#ff6900"/>
+              </g>
+            </svg>
+          </div>
+          <div class="stack-content">
+            <div class="blob"></div>
+            <div class="stack-card-head">
+              <div>
+                <span class="stack-eyebrow">Demolition</span>
+                <div class="stack-name">Demolition Worker</div>
+              </div>
+              <div class="stack-price">from ₹800/day</div>
+            </div>
+            <p class="stack-desc">Heavy masonry breaking, RCC chipping, tile stripping, trenching and rubble disposal.</p>
+            <ul class="stack-features">
+              <li>ID-verified, safety-briefed on arrival</li>
+              <li>Fixed daily rate, no haggling at the gate</li>
+              <li>Brings own breaking and hand tools</li>
+            </ul>
+            <button class="add-btn-lg" data-add>Add to crew <span>+</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-item">
+      <div class="wrap">
+        <div class="stack-card tc-cent">
+          <div class="stack-media">
+            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Centing pair illustration">
+              <rect width="400" height="500" fill="#FFE1C2"/>
+              <defs>
+                <radialGradient id="gCent" cx="76%" cy="10%" r="70%">
+                  <stop offset="0%" stop-color="#1e293b" stop-opacity="0.14"/>
+                  <stop offset="100%" stop-color="#1e293b" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="500" fill="url(#gCent)"/>
+              <g stroke="#4a2a0c" stroke-width="4" fill="none" stroke-linecap="round">
+                <rect x="70" y="150" width="260" height="14"/>
+                <line x1="90" y1="164" x2="90" y2="400"/>
+                <line x1="200" y1="164" x2="200" y2="400"/>
+                <line x1="310" y1="164" x2="310" y2="400"/>
+                <line x1="90" y1="260" x2="200" y2="260"/>
+                <line x1="200" y1="260" x2="310" y2="260"/>
+              </g>
+              <circle cx="200" cy="72" r="20" fill="#ff6900"/>
+            </svg>
+          </div>
+          <div class="stack-content">
+            <div class="blob"></div>
+            <div class="stack-card-head">
+              <div>
+                <span class="stack-eyebrow">Formwork</span>
+                <div class="stack-name">Centing Pair</div>
+              </div>
+              <div class="stack-price">from ₹920/day</div>
+            </div>
+            <p class="stack-desc">Column, beam and slab shuttering, wooden staging, prop support and box assembly.</p>
+            <ul class="stack-features">
+              <li>ID-verified, safety-briefed on arrival</li>
+              <li>Fixed daily rate, no haggling at the gate</li>
+              <li>Brings own props, planks and clamps</li>
+            </ul>
+            <button class="add-btn-lg" data-add>Add to crew <span>+</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-item">
+      <div class="wrap">
         <div class="stack-card tc-steel">
           <div class="stack-media">
-            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scaffolding and reinforcement illustration">
+            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reinforcement karigar illustration">
               <rect width="400" height="500" fill="#FFE1C2"/>
               <defs>
                 <radialGradient id="gScaf" cx="76%" cy="10%" r="70%">
@@ -639,59 +916,17 @@
           <div class="stack-content">
             <div class="blob"></div>
             <div class="stack-card-head">
-              <div class="stack-name">Reinforcement &amp; Scaffolding</div>
+              <div>
+                <span class="stack-eyebrow">Steel &amp; Rebar</span>
+                <div class="stack-name">Reinforcement Karigar</div>
+              </div>
               <div class="stack-price">from ₹950/day</div>
             </div>
-            <p class="stack-desc">Rebar tying, cage assembly and scaffold rigging — set up safely and ready before the pour or climb.</p>
+            <p class="stack-desc">Steel rebar cutting, bending, column cage binding and slab reinforcement mesh tying.</p>
             <ul class="stack-features">
               <li>ID-verified, safety-briefed on arrival</li>
               <li>Fixed daily rate, no haggling at the gate</li>
               <li>Brings own harness and rigging gear</li>
-            </ul>
-            <button class="add-btn-lg" data-add>Add to crew <span>+</span></button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="stack-item">
-      <div class="wrap">
-        <div class="stack-card tc-helper">
-          <div class="stack-media">
-            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="General helper illustration">
-              <rect width="400" height="500" fill="#121c29"/>
-              <defs>
-                <radialGradient id="gHelp" cx="72%" cy="14%" r="70%">
-                  <stop offset="0%" stop-color="#ff6900" stop-opacity="0.35"/>
-                  <stop offset="100%" stop-color="#ff6900" stop-opacity="0"/>
-                </radialGradient>
-              </defs>
-              <rect width="400" height="500" fill="url(#gHelp)"/>
-              <g stroke="#f6f2e9" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="150" cy="360" r="26"/>
-                <path d="M124 340 L110 260 L260 260 L230 340 Z"/>
-                <line x1="110" y1="260" x2="70" y2="230"/>
-                <line x1="260" y1="260" x2="300" y2="230"/>
-                <line x1="70" y1="230" x2="90" y2="230"/>
-                <line x1="300" y1="230" x2="280" y2="230"/>
-              </g>
-              <g transform="translate(250 90) rotate(20)">
-                <rect x="-4" y="0" width="8" height="140" rx="4" fill="#f6f2e9"/>
-                <path d="M-30 130 Q0 100 30 130 L20 180 Q0 195 -20 180 Z" fill="#ff6900"/>
-              </g>
-            </svg>
-          </div>
-          <div class="stack-content">
-            <div class="blob"></div>
-            <div class="stack-card-head">
-              <div class="stack-name">General Helper</div>
-              <div class="stack-price">from ₹650/day</div>
-            </div>
-            <p class="stack-desc">Extra hands for any stage of work — material shifting, mixing, cleanup, or backing up a lead trade.</p>
-            <ul class="stack-features">
-              <li>ID-verified and briefed before dispatch</li>
-              <li>Fixed daily rate, no haggling at the gate</li>
-              <li>Available same day or booked ahead</li>
             </ul>
             <button class="add-btn-lg" data-add>Add to crew <span>+</span></button>
           </div>
@@ -704,7 +939,7 @@
 <section id="story" class="story-section">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2>A booking made tonight, working by morning.</h2>
+      <h2>How to book your crew in 3 simple steps.</h2>
       <p>No phone calls, no contractors to chase down. Scroll to see what happens between the tap and the tools on site.</p>
     </div>
 
@@ -718,7 +953,7 @@
           </div>
 
           <div class="story-time-block">
-            <div class="story-clock" id="storyClockLabel">6:00 PM · You</div>
+            <div class="story-clock" id="storyClockLabel">Step 01 · Select Trade</div>
             <div class="story-time" id="storyTime">6:00 PM</div>
           </div>
 
@@ -752,25 +987,25 @@
             </svg>
           </div>
 
-          <div class="story-caption" id="storyCaption">Tell us the trade and headcount for tomorrow.</div>
+          <div class="story-caption" id="storyCaption">Tap ADD on any trade to build your crew.</div>
         </div>
       </div>
 
       <div class="story-steps">
         <div class="st-step" data-step="1">
-          <span class="tag">6:00 PM · You</span>
-          <h3>Tell us the trade &amp; headcount</h3>
-          <p>Pick the worker type, how many hands you need, and the date they should be on site.</p>
+          <span class="tag">Step 01 · Choose Trade</span>
+          <h3>Pick your trade &amp; headcount</h3>
+          <p>Browse verified tradesmen — brick masons, plasterers, tilers, and helpers. Tap ADD to select the exact crew required for your project.</p>
         </div>
         <div class="st-step" data-step="2">
-          <span class="tag">6:45 PM · OnBase</span>
-          <h3>A verified worker is matched</h3>
-          <p>We lock a fixed daily rate and confirm the worker in the app — no back and forth, no agents.</p>
+          <span class="tag">Step 02 · Review Cart</span>
+          <h3>Review cart &amp; site details</h3>
+          <p>Add helper labor if needed, enter your site address and supervisor contact, and review the transparent payout with ₹0 platform fees.</p>
         </div>
         <div class="st-step" data-step="3">
-          <span class="tag">7:00 AM · Site</span>
-          <h3>Worker clocks in on site</h3>
-          <p>Tools in hand, ready to start before the rest of the crew has even reached the gate.</p>
+          <span class="tag">Step 03 · Schedule Shift</span>
+          <h3>Choose your slot &amp; confirm</h3>
+          <p>Select single or multi-day schedules, pick exact shift hours, and confirm the slot to lock in your verified crew for the morning.</p>
         </div>
       </div>
     </div>
@@ -847,10 +1082,19 @@
   <div class="wrap">
     <div class="faq-wrap">
       <div class="section-head reveal" style="margin-bottom:0;">
-        <h2>Questions before you book.</h2>
-        <p>Everything contractors usually ask before their first booking. Still stuck? Message us on WhatsApp.</p>
+        <h2>Frequently asked questions.</h2>
+        <p>Everything you need to know before booking skilled workers through OnBase. Still stuck? Message us on WhatsApp.</p>
       </div>
       <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What is OnBase?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a">
+            <p>OnBase connects builders, contractors and site managers with skilled workers on demand — brick masons, tilers, plasterers and helpers — for fast, reliable dispatch.</p>
+          </div>
+        </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
             How fast can I actually get someone on site?
@@ -871,20 +1115,29 @@
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
+            What is the pricing model?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a">
+            <p>Pricing is a fixed daily rate per worker, shown before you book, with zero platform booking fees. No hidden charges, no hourly surprises, and you're charged only once the day's work is done.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Do workers bring their own tools?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a">
+            <p>Workers come with their own basic tools for the trade. For specialized equipment or materials specific to your site, you'll need to provide them.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
             What happens if a worker doesn't show up?
             <span class="faq-icon"></span>
           </button>
           <div class="faq-a">
             <p>We flag it immediately and dispatch a replacement from the roster at no extra cost. No-shows also affect a worker's standing, so it's rare — but you're never left waiting at the gate alone.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            How does payment and pricing work?
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            <p>Every trade has one fixed daily rate shown before you book, with zero booking fees. You pay the worker directly on site, exactly what was agreed — no agent cut, no last-minute renegotiation.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -902,7 +1155,7 @@
             <span class="faq-icon"></span>
           </button>
           <div class="faq-a">
-            <p>We're actively dispatching across Ahmedabad and Vadodara, with the roster expanding into nearby districts. Message us your site location and we'll confirm coverage before you book.</p>
+            <p>We're actively dispatching across Ahmedabad and Vadodara, serving residential, commercial and construction sites, with the roster expanding into nearby districts soon.</p>
           </div>
         </div>
       </div>
@@ -913,26 +1166,46 @@
 <footer>
   <div class="wrap">
     <div class="footer-top">
-      <div class="footer-tag">Every site deserves a crew that shows up.</div>
-      <div class="footer-links">
-        <div>
-           <a href="#home">Home</a>
-           <a href="#service">Service</a>
-           <a href="#about-us">About Us </a>
-           <a href="#how-it-works">How it works</a>
-           <a href="#privacypolicy">Privay Policy </a>
-           <a href="#contact-us"> Contact Us</a>
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 30c0-9 6-15 14-15s14 6 14 15H6Z" fill="var(--orange)"/>
+            <rect x="4" y="29" width="32" height="5" rx="2.5" fill="var(--orange)"/>
+            <rect x="18" y="7" width="4" height="9" rx="2" fill="var(--orange)"/>
+          </svg>
+          <span>Onbase</span>
         </div>
-        <div>
-          <a href="https://wa.me/919574089943">WhatsApp</a>
-          <a href="mailto:support@onbase.com">Contact</a>
-          <a href="https://www.instagram.com/onbasenow">Instagram</a>
+        <p class="footer-desc">Planning for tomorrow? Book verified masons and helpers today. Fixed daily pricing and guaranteed deployment through the OnBase app.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#trades">Services</a>
+        <a href="#faq">FAQ</a>
+        <a href="#about-us">About Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="/contact-us.html">Contact Us</a>
+        <a href="#terms">Terms</a>
+        <a href="/Privacy-policy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-col footer-touch">
+        <h4>Get in Touch</h4>
+        <a href="https://wa.me/919574089943" class="footer-contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+          WhatsApp: 919574089943
+        </a>
+        <span class="footer-contact-line">Email: support@onbase.com</span>
+        <div class="footer-social">
+          <a href="https://facebook.com/onbase" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.6h2.6l.4-3h-3V8.4c0-.87.24-1.46 1.5-1.46h1.6V4.28C15.9 4.19 15 4.12 13.96 4.12c-2.36 0-3.96 1.44-3.96 4.08v2.2H7.4v3h2.6V21h3.5Z"/></svg></a>
+          <a href="https://twitter.com/onbasenow" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.9.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.2Z"/></svg></a>
+          <a href="https://www.linkedin.com/company/onbase" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.4H3.6V20h3.3V8.4ZM5.3 3.4a1.9 1.9 0 1 0 0 3.9 1.9 1.9 0 0 0 0-3.9ZM20.4 20h-3.3v-6.2c0-1.5-.5-2.5-1.8-2.5-1 0-1.6.7-1.9 1.3-.1.2-.1.6-.1.9V20H10s.1-10.5 0-11.6h3.3v1.6c.4-.7 1.2-1.7 3-1.7 2.2 0 3.9 1.5 3.9 4.6V20Z"/></svg></a>
+          <a href="https://www.instagram.com/onbasenow" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 OnBase, Ahmedabad.</span>
-      <span>Verified workers. Fixed rates. No delays.</span>
+      <span>© 2026 Onbase. All rights reserved.</span>
     </div>
   </div>
 </footer>
@@ -995,9 +1268,9 @@
   const progBars = [document.getElementById('prog1'), document.getElementById('prog2'), document.getElementById('prog3')];
 
   const stepData = {
-    1:{ time:'6:00 PM', label:'6:00 PM · You', caption:'Tell us the trade and headcount for tomorrow.' },
-    2:{ time:'6:45 PM', label:'6:45 PM · OnBase', caption:'A verified worker is matched at a fixed rate.' },
-    3:{ time:'7:00 AM', label:'7:00 AM · Site', caption:'Worker clocks in, tools already in hand.' }
+    1:{ time:'6:00 PM', label:'Step 01 · Select Trade', caption:'Tap ADD on any trade to build your crew.' },
+    2:{ time:'6:45 PM', label:'Step 02 · Review Cart', caption:'Add site details — a verified worker is matched at a fixed rate.' },
+    3:{ time:'7:00 AM', label:'Step 03 · On Site', caption:'Worker clocks in, tools already in hand.' }
   };
 
   let currentStoryStep = 0;
@@ -1077,11 +1350,9 @@
 
   // crew counter
   let count = 0;
-  const crewCount = document.getElementById('crewCount');
   document.querySelectorAll('[data-add]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       count++;
-      crewCount.textContent = count;
       const original = btn.innerHTML;
       btn.innerHTML = 'Added <span>✓</span>';
       setTimeout(()=>{ btn.innerHTML = original; }, 900);

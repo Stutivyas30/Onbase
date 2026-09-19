@@ -9,341 +9,571 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #f4f5f7;
-    --card: #ffffff;
-    --card-border: #dfe2e8;
-    --text: #1e293b;
-    --text-muted: #64748b;
-    --accent: #ff6900;
-    --accent-dim: #e05e00;
     --slate: #1e293b;
-    --focus: rgba(255,105,0,0.18);
+    --slate-deep: #162032;
+    --orange: #ff6f00;
+    --orange-hover: #ff8526;
+    --orange-text: #c25400;      /* orange dark enough for small text on light */
+
+    --page: #f4f5f7;
+    --white: #ffffff;
+    --ink: #1e293b;
+    --ink-muted: #5b6678;
+    --line: #e0e4ea;
+    --focus: rgba(255,111,0,0.22);
+
+    --on-dark: #f1f5f9;
+    --on-dark-muted: #a3b0c2;
+    --line-dark: rgba(255,255,255,0.14);
   }
 
   *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
 
   body{
     margin: 0;
-    background: var(--bg);
+    background: var(--page);
     font-family: 'Inter', -apple-system, sans-serif;
-    color: var(--text);
+    color: var(--ink);
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .wrapper{
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 72px 24px 48px;
-  }
+  a{ color: inherit; }
+  .wrapper{ max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-  header.brand{
+  /* =========================================================
+     HERO  (slate)
+     ========================================================= */
+  .hero{
+    background: var(--slate);
+    color: var(--on-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-media{ position: absolute; inset: 0; z-index: 0; }
+  .hero-media video{ width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-media::after{
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(30,41,59,0.95) 0%, rgba(30,41,59,0.80) 55%, rgba(30,41,59,0.62) 100%);
+  }
+  .hero > *:not(.hero-media){ position: relative; z-index: 1; }
+
+  /* Nav lives inside the hero so the top of the page reads as one block */
+  .nav .wrapper{
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 64px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--card-border);
+    height: 80px;
+    gap: 24px;
   }
-
   .brand-mark{
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--on-dark);
   }
+  .brand-mark span{ color: var(--orange); }
 
-  .brand-tag{
-    color: var(--text-muted);
-    font-size: 0.9rem;
+  .nav-links{ display: flex; gap: 30px; }
+  .nav-links a{
+    font-size: 0.92rem;
+    color: var(--on-dark-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
   }
+  .nav-links a:hover{ color: #fff; }
+  .nav-links a[aria-current="page"]{ color: var(--orange); }
 
-  .grid{
+  .btn-nav{
+    background: var(--orange);
+    color: var(--slate);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+  }
+  .btn-nav:hover{ background: var(--orange-hover); }
+
+  .hero-grid{
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 64px;
-    align-items: start;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 72px;
+    align-items: center;
+    padding: 72px 0 128px;
   }
 
-  @media (max-width: 880px){
-    .grid{ grid-template-columns: 1fr; gap: 44px; }
-    .wrapper{ padding: 48px 20px 40px; }
-  }
-
-  /* Left column */
   h1{
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    font-size: clamp(2.7rem, 5.6vw, 4.1rem);
     font-weight: 700;
-    line-height: 1.08;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
     margin: 0 0 22px 0;
-    letter-spacing: -0.01em;
   }
+  h1 em{ font-style: italic; color: var(--orange); }
 
-  .intro{
-    font-size: 1.08rem;
+  .hero-intro{
+    font-size: 1.12rem;
     line-height: 1.65;
-    color: var(--text-muted);
-    margin: 0 0 44px 0;
+    color: var(--on-dark-muted);
+    margin: 0 0 24px 0;
     max-width: 480px;
   }
 
-  .reach-list{
+  .hero-note{
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--on-dark-muted);
+  }
+  .hero-note a{
+    color: var(--on-dark);
+    text-underline-offset: 3px;
+    transition: color 0.15s ease;
+  }
+  .hero-note a:hover{ color: var(--orange); }
+
+  /* Contact channels: the three fastest ways to reach the ops desk */
+  .channels{
     display: flex;
     flex-direction: column;
-    gap: 22px;
-    margin-bottom: 48px;
+    gap: 12px;
+    width: 100%;
+    max-width: 440px;
+    margin-left: auto;
   }
-
-  .reach-item{
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
+  .channels-title{
+    font-size: 0.85rem;
+    color: var(--on-dark-muted);
+    margin: 0 0 2px 2px;
   }
-
-  .reach-icon{
-    width: 38px;
-    height: 38px;
-    flex-shrink: 0;
-    border-radius: 9px;
-    background: var(--card);
-    border: 1px solid var(--card-border);
+  .channel{
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--accent);
+    gap: 16px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--line-dark);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: var(--on-dark);
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
   }
-
-  .reach-icon svg{ width: 18px; height: 18px; }
-
-  .reach-label{
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin: 0 0 3px 0;
+  .channel:hover{ background: rgba(255,255,255,0.12); border-color: var(--orange); }
+  .channel-icon{
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: rgba(255,111,0,0.16);
+    color: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
   }
+  .channel-icon svg{ width: 20px; height: 20px; }
+  .channel-body{ flex: 1; min-width: 0; }
+  .channel-name{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 0 0 2px 0;
+  }
+  .channel-detail{
+    font-size: 0.9rem;
+    color: var(--on-dark-muted);
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+  .channel-go{
+    width: 18px; height: 18px;
+    color: var(--on-dark-muted);
+    flex-shrink: 0;
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+  .channel:hover .channel-go{ color: var(--orange); transform: translateX(3px); }
 
-  .reach-value{
-    font-size: 1.02rem;
+  .channel.primary{ background: var(--orange); border-color: var(--orange); color: var(--slate); }
+  .channel.primary:hover{ background: var(--orange-hover); border-color: var(--orange-hover); }
+  .channel.primary .channel-icon{ background: rgba(30,41,59,0.14); color: var(--slate); }
+  .channel.primary .channel-detail{ color: rgba(30,41,59,0.82); }
+  .channel.primary .channel-go,
+  .channel.primary:hover .channel-go{ color: var(--slate); }
+  .channel:focus-visible{ outline: 2px solid #fff; outline-offset: 3px; }
+
+  /* Stats bar overlapping the hero edge */
+  .stats{ position: relative; z-index: 2; margin-top: -52px; }
+  .stats-bar{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(30,41,59,0.10);
+  }
+  .stat{ padding: 22px 26px; }
+  .stat + .stat{ border-left: 1px solid var(--line); }
+  .stat-num{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 2px 0;
+  }
+  .stat-label{
+    font-size: 0.85rem;
+    color: var(--ink-muted);
     margin: 0;
   }
 
-  .reach-value a{
-    color: var(--text);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
+  /* =========================================================
+     FORM SECTION  (light)
+     ========================================================= */
+  .contact{
+    padding: 72px 0 24px;
   }
-  .reach-value a:hover{
-    border-bottom-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* Response timeline, echoing the homepage flow */
-  .timeline{
-    border-top: 1px solid var(--card-border);
-    padding-top: 28px;
+  .contact-grid{
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 72px;
+    align-items: start;
   }
 
+  h2.section-title{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px 0;
+  }
+  .section-sub{
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    margin: 0 0 40px 0;
+    max-width: 420px;
+  }
+
+  /* Timeline: a real sequence, so the rail and dots carry meaning */
   .timeline-title{
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin: 0 0 18px 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 0 20px 0;
   }
-
   .tl-row{
     display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+    grid-template-columns: 78px 1fr;
+    gap: 18px;
+    padding-bottom: 22px;
   }
-
+  .tl-row:last-child{ padding-bottom: 0; }
   .tl-time{
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.82rem;
-    color: var(--accent-dim);
-    padding-top: 2px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--orange-text);
+    padding-top: 1px;
   }
-
   .tl-copy{
+    position: relative;
+    margin: 0;
+    padding-left: 26px;
     font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.5;
+    color: var(--ink-muted);
+    line-height: 1.55;
   }
-
-  .tl-copy strong{
-    color: var(--text);
-    font-weight: 500;
+  .tl-copy::before{
+    content: "";
+    position: absolute;
+    left: 0; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--orange);
+    box-shadow: 0 0 0 4px rgba(255,111,0,0.16);
   }
+  .tl-row:not(:last-child) .tl-copy::after{
+    content: "";
+    position: absolute;
+    left: 4.5px; top: 22px; bottom: -28px;
+    width: 1px;
+    background: var(--line);
+  }
+  .tl-copy strong{ color: var(--ink); font-weight: 600; }
 
-  /* Right column: form card */
+  .based{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+  }
+  .based svg{ width: 20px; height: 20px; color: var(--orange-text); flex-shrink: 0; }
+  .based strong{ color: var(--ink); font-weight: 600; }
+
+  /* Form card */
   .card{
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 14px;
-    padding: 38px;
-    box-shadow: 0 20px 40px rgba(30,41,59,0.06);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 24px 48px rgba(30,41,59,0.07);
   }
-
-  @media (max-width: 480px){
-    .card{ padding: 26px 22px; }
-  }
-
-  .card h2{
+  .card h3{
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.4rem;
-    font-weight: 700;
     margin: 0 0 6px 0;
   }
-
   .card-sub{
     font-size: 0.92rem;
-    color: var(--text-muted);
+    color: var(--ink-muted);
     margin: 0 0 28px 0;
   }
 
-  .field{
-    margin-bottom: 16px;
-  }
-
+  .row-2{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field{ margin-bottom: 16px; }
   .field label{
     display: block;
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink-muted);
     margin-bottom: 7px;
   }
 
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  select,
-  textarea{
+  input[type="text"], input[type="email"], input[type="tel"], select, textarea{
     width: 100%;
     padding: 13px 14px;
     font-size: 0.98rem;
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    background: #f8f9fb;
-    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--page);
+    color: var(--ink);
     font-family: inherit;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
   }
-
   select{
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b6678' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 14px center;
     padding-right: 36px;
   }
-
-  input::placeholder, textarea::placeholder{
-    color: #97a0ad;
-  }
-
+  input::placeholder, textarea::placeholder{ color: #98a2b3; }
   input:focus, textarea:focus, select:focus{
     outline: none;
-    border-color: var(--accent);
+    border-color: var(--orange);
+    background: var(--white);
     box-shadow: 0 0 0 3px var(--focus);
   }
-
-  textarea{
-    min-height: 130px;
-    resize: vertical;
-  }
+  textarea{ min-height: 130px; resize: vertical; }
 
   .submit-btn{
     width: 100%;
     padding: 15px;
-    background: var(--accent);
-    color: #fff;
+    background: var(--orange);
+    color: var(--slate);
     border: none;
-    border-radius: 8px;
+    border-radius: 999px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
     cursor: pointer;
     transition: background 0.15s ease, transform 0.1s ease;
-    margin-top: 6px;
+    margin-top: 8px;
   }
-
-  .submit-btn:hover{ background: var(--accent-dim); }
+  .submit-btn:hover{ background: var(--orange-hover); }
   .submit-btn:active{ transform: scale(0.99); }
-  .submit-btn:focus-visible{
-    outline: 2px solid var(--accent);
+  .submit-btn:focus-visible, .btn-nav:focus-visible, .q-btn:focus-visible{
+    outline: 2px solid var(--ink);
     outline-offset: 3px;
   }
+  .hero .btn-nav:focus-visible, .hero .q-btn:focus-visible{ outline-color: #fff; }
 
   .status-msg{
     margin-top: 14px;
-    font-size: 0.9rem;
-    color: var(--accent-dim);
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--orange-text);
     display: none;
   }
   .status-msg.show{ display: block; }
 
+  /* =========================================================
+     FOOTER  (slate)
+     ========================================================= */
   footer.foot{
-    margin-top: 72px;
-    padding-top: 24px;
-    border-top: 1px solid var(--card-border);
+    margin-top: 96px;
+    background: var(--slate);
+    color: var(--on-dark);
+  }
+  footer.foot .wrapper{
+    padding-top: 40px;
+    padding-bottom: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .foot-top{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 16px;
+  }
+  .foot-tag{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .foot-links{ display: flex; flex-wrap: wrap; gap: 22px; }
+  .foot-links a{
+    font-size: 0.9rem;
+    color: var(--on-dark-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .foot-links a:hover{ color: var(--orange); }
+  .foot-copy{
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--on-dark-muted);
+    margin: 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-dark);
   }
 
-  footer.foot a{ color: var(--text-muted); }
-  footer.foot a:hover{ color: var(--accent); }
+  /* =========================================================
+     RESPONSIVE
+     ========================================================= */
+  @media (max-width: 940px){
+    .nav-links{ display: none; }
+    .hero-grid{ grid-template-columns: 1fr; gap: 40px; padding: 40px 0 110px; }
+    .channels{ margin-left: 0; max-width: none; }
+    .stats-bar{ grid-template-columns: repeat(2, 1fr); }
+    .stat + .stat{ border-left: 0; }
+    .stat:nth-child(even){ border-left: 1px solid var(--line); }
+    .stat:nth-child(n+3){ border-top: 1px solid var(--line); }
+    .contact{ padding-top: 60px; }
+    .contact-grid{ grid-template-columns: 1fr; gap: 48px; }
+    .section-sub{ margin-bottom: 32px; }
+  }
+  @media (max-width: 520px){
+    .wrapper{ padding: 0 20px; }
+    .card{ padding: 26px 20px; }
+    .row-2{ grid-template-columns: 1fr; gap: 0; }
+    .stat{ padding: 18px 18px; }
+    .channel{ padding: 16px; }
+    .tl-row{ grid-template-columns: 64px 1fr; gap: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    .hero-media video{ display: none; }
+    *{ transition: none !important; }
+  }
 </style>
 </head>
 <body>
 
-  <div class="wrapper">
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="hero-media" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="https://assets.mixkit.co/videos/31473/31473-360.mp4" type="video/mp4">
+      </video>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <div class="wrapper">
+        <a href="index.html" class="brand-mark">on<span>base</span></a>
+        <div class="nav-links">
+          <a href="index.html#trades">Trades</a>
+          <a href="index.html#how-to-book">How to Book</a>
+          <a href="index.html#taste">Reviews</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="about.html">About Us</a>
+          <a href="/contact-us.html" aria-current="page">Contact</a>
+        </div>
+        <a href="index.html#download-app" class="btn-nav">Get App</a>
+      </div>
+    </nav>
 
-    <header class="brand">
-      <span class="brand-mark">onbase</span>
-      <span class="brand-tag">Ahmedabad, Gujarat</span>
-    </header>
+    <div class="wrapper">
+      <div class="hero-grid">
+        <div>
+          <h1>Tell us what<br>your site <em>needs.</em></h1>
+          <p class="hero-intro">Hiring, a booking question, or something that needs sorting before tomorrow's shift — reach the ops desk directly and get a straight answer the same day.</p>
 
-    <div class="grid">
-
-      <!-- Left column: info -->
-      <div>
-        <h1>Tell us what<br>your site needs.</h1>
-        <p class="intro">Hiring, a booking question, or something that needs sorting before tomorrow's shift — write to us and we'll get back to you same day.</p>
-
-        <div class="reach-list">
-          <div class="reach-item">
-            <span class="reach-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9 7 9-7"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
-            </span>
-            <div>
-              <p class="reach-label">Email</p>
-              <p class="reach-value"><a href="mailto:support@onbase.com">support@onbase.com</a></p>
-            </div>
-          </div>
-
-          <div class="reach-item">
-            <span class="reach-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </span>
-            <div>
-              <p class="reach-label">WhatsApp / Phone</p>
-              <p class="reach-value"><a href="https://wa.me/919574089943">+91 95740 89943</a></p>
-            </div>
-          </div>
-
-          <div class="reach-item">
-            <span class="reach-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </span>
-            <div>
-              <p class="reach-label">Based in</p>
-              <p class="reach-value">Ahmedabad, Gujarat, India</p>
-            </div>
-          </div>
+          <p class="hero-note">Prefer to write it all down? <a href="#message-form">Jump to the form</a>.</p>
         </div>
 
-        <div class="timeline">
+        <div class="channels">
+          <p class="channels-title">Fastest ways to reach the ops desk</p>
+
+          <a class="channel primary" href="https://wa.me/919574089943">
+            <span class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.3L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+            </span>
+            <div class="channel-body">
+              <p class="channel-name">WhatsApp</p>
+              <p class="channel-detail">Best for bookings · +91 95740 89943</p>
+            </div>
+            <svg class="channel-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+
+          <a class="channel" href="tel:+919574089943">
+            <span class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <div class="channel-body">
+              <p class="channel-name">Call</p>
+              <p class="channel-detail">Talk to the ops desk · +91 95740 89943</p>
+            </div>
+            <svg class="channel-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+
+          <a class="channel" href="mailto:support@onbase.com">
+            <span class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l9 7 9-7"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+            </span>
+            <div class="channel-body">
+              <p class="channel-name">Email</p>
+              <p class="channel-detail">support@onbase.com</p>
+            </div>
+            <svg class="channel-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats" aria-label="OnBase at a glance">
+    <div class="wrapper">
+      <div class="stats-bar">
+        <div class="stat"><p class="stat-num">500+</p><p class="stat-label">Verified workers on the roster</p></div>
+        <div class="stat"><p class="stat-num">24hr</p><p class="stat-label">Average time to dispatch</p></div>
+        <div class="stat"><p class="stat-num">7</p><p class="stat-label">Trades bookable on demand</p></div>
+        <div class="stat"><p class="stat-num">₹0</p><p class="stat-label">Booking fees, ever</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FORM ================= -->
+  <main class="contact">
+    <div class="wrapper">
+      <div class="contact-grid">
+
+        <div>
+          <h2 class="section-title">Or send us the details.</h2>
+          <p class="section-sub">The more you tell us up front — trade, dates, headcount — the faster we can confirm.</p>
+
           <p class="timeline-title">What happens after you send it</p>
           <div class="tl-row">
             <span class="tl-time">Today</span>
@@ -357,51 +587,69 @@
             <span class="tl-time">7:00 AM</span>
             <p class="tl-copy"><strong>Site's covered</strong> — if it's a booking, workers are already there.</p>
           </div>
+
+          <div class="based">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Based in <strong>Ahmedabad, Gujarat, India</strong></span>
+          </div>
+        </div>
+
+        <div class="card" id="message-form">
+          <h3>Send a message</h3>
+          <p class="card-sub">Fill this in and we'll write back today.</p>
+          <form id="contactForm">
+            <div class="row-2">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="reason">This is about</label>
+              <select id="reason" name="reason">
+                <option>Booking a worker</option>
+                <option>Joining as a worker</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Trade, dates, headcount — or just tell us what you need" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send message</button>
+            <p class="status-msg" id="statusMsg" role="status">Sent. We'll write back today.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="foot">
+    <div class="wrapper">
+      <div class="foot-top">
+        <p class="foot-tag">Every site deserves a crew that shows up.</p>
+        <div class="foot-links">
+          <a href="https://apps.apple.com/in/app/onbase-on-demand-site-workers/id6775058653">iOS App</a>
+          <a href="https://play.google.com/store/apps/details?id=com.onbasenow.main">Android App</a>
+          <a href="mailto:support@onbase.com">Support</a>
+          <a href="https://www.instagram.com/onbasenow">Instagram</a>
+          <a href="https://www.linkedin.com/company/onbase">LinkedIn</a>
+          <a href="https://wa.me/919574089943">WhatsApp</a>
         </div>
       </div>
-
-      <!-- Right column: form -->
-      <div class="card">
-        <h2>Send a message</h2>
-        <p class="card-sub">Fill this in and we'll write back today.</p>
-        <form id="contactForm">
-          <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required>
-          </div>
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
-          </div>
-          <div class="field">
-            <label for="reason">This is about</label>
-            <select id="reason" name="reason">
-              <option>Booking a worker</option>
-              <option>Joining as a worker</option>
-              <option>Something else</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Trade, dates, headcount — or just tell us what you need" required></textarea>
-          </div>
-          <button type="submit" class="submit-btn">Send message</button>
-          <p class="status-msg" id="statusMsg">Sent. We'll write back today.</p>
-        </form>
-      </div>
-
+      <p class="foot-copy">© 2026 OnBase, Ahmedabad. Verified workers. Fixed rates. No delays.</p>
     </div>
-
-    <footer class="foot">
-      <span>© 2026 OnBase, Ahmedabad.</span>
-      <span><a href="https://onbase-home.netlify.app/">Back to home</a> · <a href="https://www.instagram.com/onbasenow">Instagram</a></span>
-    </footer>
-
-  </div>
+  </footer>
 
   <script>
     document.getElementById('contactForm').addEventListener('submit', function(e){
